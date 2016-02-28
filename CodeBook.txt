@@ -1,0 +1,34 @@
+Variables discriptions for the Step 1:Mergin the training and the test sets to create one data set:
+
+trainD<- is the data table that contains the data from the X_train.txt file {trainD<- read.table("X_train.txt")}
+trainL<- is the data table that contains the data from the y_train.txt file {trainL<- read.table("y_train.txt")}
+trainSub<- is the data table that contains the data from the subject_train.txt file {trainSub<- read.table("subject_train.txt")}
+testD<- is the data table that contains the data from the X_test.txt file {testD<- read.table("X_test.txt")}
+testL<- is the data table that contains the data from the y_train.txt file {trainD<- read.table("y_test.txt")}
+testSub<- is the data table that contains the data from the subject_test.txt file {trainD<- read.table("subject_test.txt")}
+comD<- is the of combing trainD and testD data sets {comD<- rbind(trainD, testD)}
+comL<- is the of combing trainL and testL data sets {comL<- rbind(trainL, testL)}
+comSub<- is the of combing trainSub and testSub data sets {comD<- rbind(trainSub, testSub)}
+
+Variables discriptions for the Step 2:Extracting only the measurements on the mean and standard deviation for each measurement
+
+feat <- is the data table that contains the data from the features.txt file {feat<- read.table("features.txt")}
+m_stdev_ind<- the integer vector of lenght 66 that contains the indecies of mean and standard deviation int the feat table 
+
+Variables discriptions for the Step 3:Using descriptive activity names to name the activities in the data set
+
+act <- is the data table that contains the data from activity_lables.txt {act<-read.table("activity_labels.txt")}
+
+Variables discriptions for the Step 4:Appropriately labels the data set with descriptive variable names
+
+res_Data is the cleaned data set  {res_Data<- cbind(comSub, comL, comD)}
+
+Variables discriptions for the Step 5:creating a second tidy data set:
+
+subLen <-  integer cpntains the leght of the comSub table {subLen<- length(table(comSub))}
+actLen <- integer contains the number of rows in act table {actLen<- dim(act)[1]}
+coLen <- integer contains the dimension of res_Data table {coLen<- dim(res_Data)[2]}
+rslt <- matrix where number of rows equals to the product subLen and actLen, and number of columns equals to coLen
+{rslt<- matrix(NA, nrow=subLen*actLen, ncol=coLen)} 
+rslt <- the object of data.frame class made of rslt matrix {rslt<-as.data.frame(rslt)}
+
