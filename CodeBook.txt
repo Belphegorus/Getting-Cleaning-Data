@@ -1,34 +1,81 @@
-Variables discriptions for the Step 1:Mergin the training and the test sets to create one data set:
 
-trainD<- is the data table that contains the data from the X_train.txt file {trainD<- read.table("X_train.txt")}
-trainL<- is the data table that contains the data from the y_train.txt file {trainL<- read.table("y_train.txt")}
-trainSub<- is the data table that contains the data from the subject_train.txt file {trainSub<- read.table("subject_train.txt")}
-testD<- is the data table that contains the data from the X_test.txt file {testD<- read.table("X_test.txt")}
-testL<- is the data table that contains the data from the y_train.txt file {trainD<- read.table("y_test.txt")}
-testSub<- is the data table that contains the data from the subject_test.txt file {trainD<- read.table("subject_test.txt")}
-comD<- is the of combing trainD and testD data sets {comD<- rbind(trainD, testD)}
-comL<- is the of combing trainL and testL data sets {comL<- rbind(trainL, testL)}
-comSub<- is the of combing trainSub and testSub data sets {comD<- rbind(trainSub, testSub)}
 
-Variables discriptions for the Step 2:Extracting only the measurements on the mean and standard deviation for each measurement
+subject - The participant
+activity - The label of the activity performed when the corresponding measurements were taken
+Extracted Feature Fields
 
-feat <- is the data table that contains the data from the features.txt file {feat<- read.table("features.txt")}
-m_stdev_ind<- the integer vector of lenght 66 that contains the indecies of mean and standard deviation int the feat table 
+tBodyAcc-mean()-X (column 1)
+tBodyAcc-mean()-Y (column 2)
+tBodyAcc-mean()-Z (column 3)
+tBodyAcc-std()-X (column 4)
+tBodyAcc-std()-Y (column 5)
+tBodyAcc-std()-Z (column 6)
+tGravityAcc-mean()-X (column 41)
+tGravityAcc-mean()-Y (column 42)
+tGravityAcc-mean()-Z (column 43)
+tGravityAcc-std()-X (column 44)
+tGravityAcc-std()-Y (column 45)
+tGravityAcc-std()-Z (column 46)
+tBodyAccJerk-mean()-X (column 81)
+tBodyAccJerk-mean()-Y (column 82)
+tBodyAccJerk-mean()-Z (column 83)
+tBodyAccJerk-std()-X (column 84)
+tBodyAccJerk-std()-Y (column 85)
+tBodyAccJerk-std()-Z (column 86)
+tBodyGyro-mean()-X (column 121)
+tBodyGyro-mean()-Y (column 122)
+tBodyGyro-mean()-Z (column 123)
+tBodyGyro-std()-X (column 124)
+tBodyGyro-std()-Y (column 125)
+tBodyGyro-std()-Z (column 126)
+tBodyGyroJerk-mean()-X (column 161)
+tBodyGyroJerk-mean()-Y (column 162)
+tBodyGyroJerk-mean()-Z (column 163)
+tBodyGyroJerk-std()-X (column 164)
+tBodyGyroJerk-std()-Y (column 165)
+tBodyGyroJerk-std()-Z (column 166)
+tBodyAccMag-mean() (column 201)
+tBodyAccMag-std() (column 202)
+tGravityAccMag-mean() (column 214)
+tGravityAccMag-std() (column 215)
+tBodyAccJerkMag-mean() (column 227)
+tBodyAccJerkMag-std() (column 228)
+tBodyGyroMag-mean() (column 240)
+tBodyGyroMag-std() (column 241)
+tBodyGyroJerkMag-mean() (column 253)
+tBodyGyroJerkMag-std() (column 254)
+fBodyAcc-mean()-X (column 266)
+fBodyAcc-mean()-Y (column 267)
+fBodyAcc-mean()-Z (column 268)
+fBodyAcc-std()-X (column 269)
+fBodyAcc-std()-Y (column 270)
+fBodyAcc-std()-Z (column 271)
+fBodyAccJerk-mean()-X (column 345)
+fBodyAccJerk-mean()-Y (column 346)
+fBodyAccJerk-mean()-Z (column 347)
+fBodyAccJerk-std()-X (column 348)
+fBodyAccJerk-std()-Y (column 349)
+fBodyAccJerk-std()-Z (column 350)
+fBodyGyro-mean()-X (column 424)
+fBodyGyro-mean()-Y (column 425)
+fBodyGyro-mean()-Z (column 426)
+fBodyGyro-std()-X (column 427)
+fBodyGyro-std()-Y (column 428)
+fBodyGyro-std()-Z (column 429)
+fBodyAccMag-mean() (column 503)
+fBodyAccMag-std() (column 504)
+fBodyBodyAccJerkMag-mean() (column 516)
+fBodyBodyAccJerkMag-std() (column 517)
+fBodyBodyGyroMag-mean() (column 529)
+fBodyBodyGyroMag-std() (column 530)
+fBodyBodyGyroJerkMag-mean() (column 542)
+fBodyBodyGyroJerkMag-std() (column 543)
+Activity Labels
 
-Variables discriptions for the Step 3:Using descriptive activity names to name the activities in the data set
-
-act <- is the data table that contains the data from activity_lables.txt {act<-read.table("activity_labels.txt")}
-
-Variables discriptions for the Step 4:Appropriately labels the data set with descriptive variable names
-
-res_Data is the cleaned data set  {res_Data<- cbind(comSub, comL, comD)}
-
-Variables discriptions for the Step 5:creating a second tidy data set:
-
-subLen <-  integer cpntains the leght of the comSub table {subLen<- length(table(comSub))}
-actLen <- integer contains the number of rows in act table {actLen<- dim(act)[1]}
-coLen <- integer contains the dimension of res_Data table {coLen<- dim(res_Data)[2]}
-rslt <- matrix where number of rows equals to the product subLen and actLen, and number of columns equals to coLen
-{rslt<- matrix(NA, nrow=subLen*actLen, ncol=coLen)} 
-rslt <- the object of data.frame class made of rslt matrix {rslt<-as.data.frame(rslt)}
+WALKING (value 1)
+WALKING_UPSTAIRS (value 2)
+WALKING_DOWNSTAIRS (value 3)
+SITTING (value 4)
+STANDING (value 5)
+LAYING (value 6)
 
